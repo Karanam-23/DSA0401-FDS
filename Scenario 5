@@ -1,0 +1,26 @@
+import numpy as np
+
+# Simulate a NumPy array for fuel efficiency (in miles per gallon)
+# Each element represents the fuel efficiency of a car model
+fuel_efficiency = np.array([25, 30, 28, 35, 22, 40, 32])
+
+print("Fuel Efficiency Data (MPG):", fuel_efficiency)
+
+# 1. Calculate the average fuel efficiency
+average_fuel_efficiency = np.mean(fuel_efficiency)
+print(f"\nAverage Fuel Efficiency: {average_fuel_efficiency:.2f} MPG")
+
+# 2. Determine the percentage improvement in fuel efficiency between two car models
+# Let's pick two car models for comparison, for example, the first and the sixth model (indices 0 and 5)
+model1_efficiency = fuel_efficiency[0] # e.g., 25 MPG
+model2_efficiency = fuel_efficiency[5] # e.g., 40 MPG
+
+print(f"\nFuel efficiency of Model 1: {model1_efficiency} MPG")
+print(f"Fuel efficiency of Model 2: {model2_efficiency} MPG")
+
+# Calculate percentage improvement. Assuming model2 is better than model1 for 'improvement'
+if model1_efficiency > 0:
+    percentage_improvement = ((model2_efficiency - model1_efficiency) / model1_efficiency) * 100
+    print(f"Percentage improvement from Model 1 to Model 2: {percentage_improvement:.2f}%")
+else:
+    print("Cannot calculate percentage improvement as Model 1's efficiency is zero or negative.")
