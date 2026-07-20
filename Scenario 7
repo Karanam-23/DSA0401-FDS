@@ -1,0 +1,28 @@
+import pandas as pd
+
+# Create a sample order_data DataFrame
+order_data = pd.DataFrame({
+    'customer_id': ['C001', 'C002', 'C001', 'C003', 'C002', 'C001', 'C004', 'C003'],
+    'order_date': pd.to_datetime(['2023-01-15', '2023-01-16', '2023-01-17', '2023-01-18', '2023-01-19', '2023-01-20', '2023-01-21', '2023-01-22']),
+    'product_name': ['Laptop', 'Mouse', 'Keyboard', 'Laptop', 'Monitor', 'Mouse', 'Keyboard', 'Mouse'],
+    'order_quantity': [1, 2, 1, 1, 1, 3, 2, 1]
+})
+
+print("Original Order Data:\n", order_data)
+print("\n" + "-"*30 + "\n")
+
+# 1. Total number of orders made by each customer
+total_orders_per_customer = order_data['customer_id'].value_counts()
+print("Total number of orders per customer:\n", total_orders_per_customer)
+print("\n" + "-"*30 + "\n")
+
+# 2. Average order quantity for each product
+average_quantity_per_product = order_data.groupby('product_name')['order_quantity'].mean()
+print("Average order quantity per product:\n", average_quantity_per_product)
+print("\n" + "-"*30 + "\n")
+
+# 3. Earliest and latest order dates in the dataset
+earliest_order_date = order_data['order_date'].min()
+latest_order_date = order_data['order_date'].max()
+print(f"Earliest Order Date: {earliest_order_date.strftime('%Y-%m-%d')}")
+print(f"Latest Order Date: {latest_order_date.strftime('%Y-%m-%d')}")
