@@ -1,0 +1,29 @@
+import pandas as pd
+
+# Create a sample property_data DataFrame
+property_data = pd.DataFrame({
+    'property_id': ['P001', 'P002', 'P003', 'P004', 'P005', 'P006', 'P007', 'P008', 'P009', 'P010'],
+    'location': ['Downtown', 'Suburb', 'Downtown', 'Rural', 'Suburb', 'Downtown', 'Rural', 'Suburb', 'Downtown', 'Suburb'],
+    'number_of_bedrooms': [3, 4, 2, 5, 3, 4, 6, 2, 5, 3],
+    'area_sq_ft': [1500, 2200, 1200, 3000, 1800, 2000, 3500, 1000, 2800, 1600],
+    'listing_price': [300000, 450000, 250000, 550000, 380000, 420000, 650000, 200000, 520000, 350000]
+})
+
+print("Original Property Data:\n", property_data)
+print("\n" + "-"*50 + "\n")
+
+# 1. The average listing price of properties in each location
+average_price_by_location = property_data.groupby('location')['listing_price'].mean()
+print("Average listing price by location:\n", average_price_by_location)
+print("\n" + "-"*50 + "\n")
+
+# 2. The number of properties with more than four bedrooms
+properties_gt_4_bedrooms = property_data[property_data['number_of_bedrooms'] > 4]
+count_gt_4_bedrooms = len(properties_gt_4_bedrooms)
+print(f"Number of properties with more than four bedrooms: {count_gt_4_bedrooms}")
+print("Properties with more than four bedrooms:\n", properties_gt_4_bedrooms)
+print("\n" + "-"*50 + "\n")
+
+# 3. The property with the largest area
+property_largest_area = property_data.loc[property_data['area_sq_ft'].idxmax()]
+print("Property with the largest area:\n", property_largest_area)
