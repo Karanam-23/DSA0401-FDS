@@ -1,0 +1,22 @@
+import numpy as np
+
+# Simulate quarterly sales data
+# Assuming sales_data is an array where each element represents sales for a quarter
+sales_data = np.array([100000, 135000, 140000, 160000]) # Example sales for Q1, Q2, Q3, Q4
+
+print("Quarterly Sales Data:", sales_data)
+
+# 1. Calculate the total sales for the year
+total_sales_year = np.sum(sales_data)
+print(f"\nTotal sales for the year: {total_sales_year:,.2f}")
+
+# 2. Determine the percentage increase in sales from the first quarter to the fourth quarter
+# Sales for Q1 (index 0) and Q4 (index 3)
+q1_sales = sales_data[0]
+q4_sales = sales_data[3]
+
+if q1_sales > 0:
+    percentage_increase = ((q4_sales - q1_sales) / q1_sales) * 100
+    print(f"Percentage increase from Q1 to Q4: {percentage_increase:.2f}%")
+else:
+    print("Cannot calculate percentage increase as Q1 sales were zero or negative.")
